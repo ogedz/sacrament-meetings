@@ -14,7 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </header>
         <main className="container mx-auto p-4 flex-grow">{children}</main>
         <footer className="bg-white border-t p-4 text-center text-sm text-gray-600">
-          &copy; {new Date().getFullYear()} Monday Ogedengbe
+          &copy; 2026 Monday Ogedengbe
         </footer>
       </body>
     </html>
