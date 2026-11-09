@@ -1,29 +1,30 @@
+import Link from 'next/link';
 import type { SacramentMeeting } from '@/lib/types';
 
-export default function MeetingDetail({ meeting }: { meeting: SacramentMeeting }) {
+export default function MeetingCard({ meeting }: { meeting: SacramentMeeting }) {
   return (
-    <div className="bg-white p-6 rounded shadow text-gray-900">
-      <h1 className="text-3xl font-bold mb-4">Sacrament Meeting - {meeting.date}</h1>
-      <p><strong>Type:</strong> {meeting.meetingType}</p>
-      <p><strong>Presiding:</strong> {meeting.presiding}</p>
-      <p><strong>Conducting:</strong> {meeting.conducting}</p>
-      
-      <div className="mt-4">
-        <h3 className="text-xl font-semibold">Agenda</h3>
-        <p>Opening Hymn: #{meeting.openingHymn.number} - {meeting.openingHymn.title}</p>
-        <p>Opening Prayer: {meeting.openingPrayer}</p>
-        <p>Sacrament Hymn: #{meeting.sacramentHymn.number} - {meeting.sacramentHymn.title}</p>
-        
-        <h4 className="mt-2 font-semibold">Speakers & Musical Numbers</h4>
-        <ul className="list-disc pl-5">
-          {meeting.speakers.map((s, i) => (
-            <li key={i}>{s.name} - {s.topic} ({s.type})</li>
-          ))}
-        </ul>
-        
-        <p className="mt-2">Closing Hymn: #{meeting.closingHymn.number} - {meeting.closingHymn.title}</p>
-        <p>Closing Prayer: {meeting.closingPrayer}</p>
+    <div className="group border border-gray-200 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all bg-white flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <div>
+        <div className="flex items-center gap-3 mb-2">
+          <span className="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+            {meeting.meetingType}
+          </span>
+          <span className="text-gray-500 text-sm font-medium">{meeting.date}</span>
+        </div>
+        <h2 className="text-xl font-bold text-gray-900 mb-1">
+          {meeting.presiding}
+        </h2>
+        <p className="text-gray-600 text-sm">
+          Conducting: {meeting.conducting}
+        </p>
       </div>
+      
+      <Link 
+        href={`/meetings/${meeting.id}`} 
+        className="w-full sm:w-auto text-center bg-gray-50 group-hover:bg-blue-600 group-hover:text-white text-gray-700 font-semibold px-6 py-3 rounded-lg transition-colors border border-gray-200 group-hover:border-blue-600"
+      >
+        View Agenda →
+      </Link>
     </div>
   );
 }
