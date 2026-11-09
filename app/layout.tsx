@@ -1,6 +1,12 @@
 import "./globals.css";
 import Link from "next/link";
 import NavLinks from "@/components/NavLinks";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Sacrament Meeting Planner | WDD 430",
+  description: "Plan and review sacrament meeting agendas, including hymns, prayers, speakers, and ward business.",
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
