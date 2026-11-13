@@ -8,7 +8,8 @@ export default async function MeetingPage({ params }: { params: Promise<{ id: st
   
   if (Number.isNaN(id)) notFound();
   
-  const meeting = getMeetingById(id);
+  const meeting = await getMeetingById(id);
+  
   if (!meeting) notFound();
 
   return <MeetingDetail meeting={meeting} />;
