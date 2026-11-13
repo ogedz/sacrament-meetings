@@ -20,7 +20,7 @@ const meetings: SacramentMeeting[] = [
     speakers: [{ name: 'Ward Members', topic: 'Testimonies', type: 'speaker' }],
     closingHymn: { number: 152, title: 'God Be with You Till We Meet Again' }, closingPrayer: 'Sister Williams'
   },
-  // Add 3 more similar records to reach 5 total
+  
   {
     id: 3, date: '2026-05-17', meetingType: 'regular',
     presiding: 'Bishop Smith', conducting: 'Brother Jones',

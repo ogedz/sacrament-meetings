@@ -1,8 +1,9 @@
 import MeetingCard from '@/components/MeetingCard';
-import { getMeetings } from '@/lib/meetings-db';
 
 export default async function MeetingsList() {
-  const meetings = getMeetings();
+  // Fetching from the API route as requested by Daniel
+  const res = await fetch('http://localhost:3000/api/meetings', { cache: 'no-store' });
+  const meetings = await res.json();
 
   return (
     <div className="max-w-4xl mx-auto py-8">
@@ -11,8 +12,8 @@ export default async function MeetingsList() {
         <p className="text-gray-500 mt-2">Browse past and upcoming sacrament meetings.</p>
       </div>
       <div className="grid gap-6">
-        {meetings.map(m => <MeetingCard key={m.id} meeting={m} />)}
+        {meetings.map((m: any) => <MeetingCard key={m.id} meeting={m} />)}
       </div>
     </div>
-  );
+  ); 
 }
